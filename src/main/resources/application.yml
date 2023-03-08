@@ -1,0 +1,5 @@
+mybatis:
+  type-aliases-package: com.example.dp.domain
+  mapper-locations: classpath*:mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

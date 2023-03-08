@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dp.dao.XxlJobInfoDAO">
+  <resultMap id="BaseResultMap" type="com.example.dp.domain.XxlJobInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="job_group" jdbcType="INTEGER" property="jobGroup" />
+    <result column="job_desc" jdbcType="VARCHAR" property="jobDesc" />
+    <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="author" jdbcType="VARCHAR" property="author" />
+    <result column="alarm_email" jdbcType="VARCHAR" property="alarmEmail" />
+    <result column="schedule_type" jdbcType="VARCHAR" property="scheduleType" />
+    <result column="schedule_conf" jdbcType="VARCHAR" property="scheduleConf" />
+    <result column="misfire_strategy" jdbcType="VARCHAR" property="misfireStrategy" />
+    <result column="executor_route_strategy" jdbcType="VARCHAR" property="executorRouteStrategy" />
+    <result column="executor_handler" jdbcType="VARCHAR" property="executorHandler" />
+    <result column="executor_param" jdbcType="VARCHAR" property="executorParam" />
+    <result column="executor_block_strategy" jdbcType="VARCHAR" property="executorBlockStrategy" />
+    <result column="executor_timeout" jdbcType="INTEGER" property="executorTimeout" />
+    <result column="executor_fail_retry_count" jdbcType="INTEGER" property="executorFailRetryCount" />
+    <result column="glue_type" jdbcType="VARCHAR" property="glueType" />
+    <result column="glue_source" jdbcType="VARCHAR" property="glueSource" />
+    <result column="glue_remark" jdbcType="VARCHAR" property="glueRemark" />
+    <result column="glue_updatetime" jdbcType="TIMESTAMP" property="glueUpdatetime" />
+    <result column="child_jobid" jdbcType="VARCHAR" property="childJobid" />
+    <result column="trigger_status" jdbcType="TINYINT" property="triggerStatus" />
+    <result column="trigger_last_time" jdbcType="BIGINT" property="triggerLastTime" />
+    <result column="trigger_next_time" jdbcType="BIGINT" property="triggerNextTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, job_group, job_desc, add_time, update_time, author, alarm_email, schedule_type, 
+    schedule_conf, misfire_strategy, executor_route_strategy, executor_handler, executor_param, 
+    executor_block_strategy, executor_timeout, executor_fail_retry_count, glue_type, 
+    glue_source, glue_remark, glue_updatetime, child_jobid, trigger_status, trigger_last_time, 
+    trigger_next_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from xxl_job_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from xxl_job_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.example.dp.domain.XxlJobInfo" useGeneratedKeys="true">
+    insert into xxl_job_info (job_group, job_desc, add_time, 
+      update_time, author, alarm_email, 
+      schedule_type, schedule_conf, misfire_strategy, 
+      executor_route_strategy, executor_handler, 
+      executor_param, executor_block_strategy, executor_timeout, 
+      executor_fail_retry_count, glue_type, glue_source, 
+      glue_remark, glue_updatetime, child_jobid, 
+      trigger_status, trigger_last_time, trigger_next_time
+      )
+    values (#{jobGroup,jdbcType=INTEGER}, #{jobDesc,jdbcType=VARCHAR}, #{addTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{author,jdbcType=VARCHAR}, #{alarmEmail,jdbcType=VARCHAR}, 
+      #{scheduleType,jdbcType=VARCHAR}, #{scheduleConf,jdbcType=VARCHAR}, #{misfireStrategy,jdbcType=VARCHAR}, 
+      #{executorRouteStrategy,jdbcType=VARCHAR}, #{executorHandler,jdbcType=VARCHAR}, 
+      #{executorParam,jdbcType=VARCHAR}, #{executorBlockStrategy,jdbcType=VARCHAR}, #{executorTimeout,jdbcType=INTEGER}, 
+      #{executorFailRetryCount,jdbcType=INTEGER}, #{glueType,jdbcType=VARCHAR}, #{glueSource,jdbcType=VARCHAR}, 
+      #{glueRemark,jdbcType=VARCHAR}, #{glueUpdatetime,jdbcType=TIMESTAMP}, #{childJobid,jdbcType=VARCHAR}, 
+      #{triggerStatus,jdbcType=TINYINT}, #{triggerLastTime,jdbcType=BIGINT}, #{triggerNextTime,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.example.dp.domain.XxlJobInfo" useGeneratedKeys="true">
+    insert into xxl_job_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="jobGroup != null">
+        job_group,
+      </if>
+      <if test="jobDesc != null">
+        job_desc,
+      </if>
+      <if test="addTime != null">
+        add_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="author != null">
+        author,
+      </if>
+      <if test="alarmEmail != null">
+        alarm_email,
+      </if>
+      <if test="scheduleType != null">
+        schedule_type,
+      </if>
+      <if test="scheduleConf != null">
+        schedule_conf,
+      </if>
+      <if test="misfireStrategy != null">
+        misfire_strategy,
+      </if>
+      <if test="executorRouteStrategy != null">
+        executor_route_strategy,
+      </if>
+      <if test="executorHandler != null">
+        executor_handler,
+      </if>
+      <if test="executorParam != null">
+        executor_param,
+      </if>
+      <if test="executorBlockStrategy != null">
+        executor_block_strategy,
+      </if>
+      <if test="executorTimeout != null">
+        executor_timeout,
+      </if>
+      <if test="executorFailRetryCount != null">
+        executor_fail_retry_count,
+      </if>
+      <if test="glueType != null">
+        glue_type,
+      </if>
+      <if test="glueSource != null">
+        glue_source,
+      </if>
+      <if test="glueRemark != null">
+        glue_remark,
+      </if>
+      <if test="glueUpdatetime != null">
+        glue_updatetime,
+      </if>
+      <if test="childJobid != null">
+        child_jobid,
+      </if>
+      <if test="triggerStatus != null">
+        trigger_status,
+      </if>
+      <if test="triggerLastTime != null">
+        trigger_last_time,
+      </if>
+      <if test="triggerNextTime != null">
+        trigger_next_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="jobGroup != null">
+        #{jobGroup,jdbcType=INTEGER},
+      </if>
+      <if test="jobDesc != null">
+        #{jobDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="author != null">
+        #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="alarmEmail != null">
+        #{alarmEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="scheduleType != null">
+        #{scheduleType,jdbcType=VARCHAR},
+      </if>
+      <if test="scheduleConf != null">
+        #{scheduleConf,jdbcType=VARCHAR},
+      </if>
+      <if test="misfireStrategy != null">
+        #{misfireStrategy,jdbcType=VARCHAR},
+      </if>
+      <if test="executorRouteStrategy != null">
+        #{executorRouteStrategy,jdbcType=VARCHAR},
+      </if>
+      <if test="executorHandler != null">
+        #{executorHandler,jdbcType=VARCHAR},
+      </if>
+      <if test="executorParam != null">
+        #{executorParam,jdbcType=VARCHAR},
+      </if>
+      <if test="executorBlockStrategy != null">
+        #{executorBlockStrategy,jdbcType=VARCHAR},
+      </if>
+      <if test="executorTimeout != null">
+        #{executorTimeout,jdbcType=INTEGER},
+      </if>
+      <if test="executorFailRetryCount != null">
+        #{executorFailRetryCount,jdbcType=INTEGER},
+      </if>
+      <if test="glueType != null">
+        #{glueType,jdbcType=VARCHAR},
+      </if>
+      <if test="glueSource != null">
+        #{glueSource,jdbcType=VARCHAR},
+      </if>
+      <if test="glueRemark != null">
+        #{glueRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="glueUpdatetime != null">
+        #{glueUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="childJobid != null">
+        #{childJobid,jdbcType=VARCHAR},
+      </if>
+      <if test="triggerStatus != null">
+        #{triggerStatus,jdbcType=TINYINT},
+      </if>
+      <if test="triggerLastTime != null">
+        #{triggerLastTime,jdbcType=BIGINT},
+      </if>
+      <if test="triggerNextTime != null">
+        #{triggerNextTime,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.dp.domain.XxlJobInfo">
+    update xxl_job_info
+    <set>
+      <if test="jobGroup != null">
+        job_group = #{jobGroup,jdbcType=INTEGER},
+      </if>
+      <if test="jobDesc != null">
+        job_desc = #{jobDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="author != null">
+        author = #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="alarmEmail != null">
+        alarm_email = #{alarmEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="scheduleType != null">
+        schedule_type = #{scheduleType,jdbcType=VARCHAR},
+      </if>
+      <if test="scheduleConf != null">
+        schedule_conf = #{scheduleConf,jdbcType=VARCHAR},
+      </if>
+      <if test="misfireStrategy != null">
+        misfire_strategy = #{misfireStrategy,jdbcType=VARCHAR},
+      </if>
+      <if test="executorRouteStrategy != null">
+        executor_route_strategy = #{executorRouteStrategy,jdbcType=VARCHAR},
+      </if>
+      <if test="executorHandler != null">
+        executor_handler = #{executorHandler,jdbcType=VARCHAR},
+      </if>
+      <if test="executorParam != null">
+        executor_param = #{executorParam,jdbcType=VARCHAR},
+      </if>
+      <if test="executorBlockStrategy != null">
+        executor_block_strategy = #{executorBlockStrategy,jdbcType=VARCHAR},
+      </if>
+      <if test="executorTimeout != null">
+        executor_timeout = #{executorTimeout,jdbcType=INTEGER},
+      </if>
+      <if test="executorFailRetryCount != null">
+        executor_fail_retry_count = #{executorFailRetryCount,jdbcType=INTEGER},
+      </if>
+      <if test="glueType != null">
+        glue_type = #{glueType,jdbcType=VARCHAR},
+      </if>
+      <if test="glueSource != null">
+        glue_source = #{glueSource,jdbcType=VARCHAR},
+      </if>
+      <if test="glueRemark != null">
+        glue_remark = #{glueRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="glueUpdatetime != null">
+        glue_updatetime = #{glueUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="childJobid != null">
+        child_jobid = #{childJobid,jdbcType=VARCHAR},
+      </if>
+      <if test="triggerStatus != null">
+        trigger_status = #{triggerStatus,jdbcType=TINYINT},
+      </if>
+      <if test="triggerLastTime != null">
+        trigger_last_time = #{triggerLastTime,jdbcType=BIGINT},
+      </if>
+      <if test="triggerNextTime != null">
+        trigger_next_time = #{triggerNextTime,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.dp.domain.XxlJobInfo">
+    update xxl_job_info
+    set job_group = #{jobGroup,jdbcType=INTEGER},
+      job_desc = #{jobDesc,jdbcType=VARCHAR},
+      add_time = #{addTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      author = #{author,jdbcType=VARCHAR},
+      alarm_email = #{alarmEmail,jdbcType=VARCHAR},
+      schedule_type = #{scheduleType,jdbcType=VARCHAR},
+      schedule_conf = #{scheduleConf,jdbcType=VARCHAR},
+      misfire_strategy = #{misfireStrategy,jdbcType=VARCHAR},
+      executor_route_strategy = #{executorRouteStrategy,jdbcType=VARCHAR},
+      executor_handler = #{executorHandler,jdbcType=VARCHAR},
+      executor_param = #{executorParam,jdbcType=VARCHAR},
+      executor_block_strategy = #{executorBlockStrategy,jdbcType=VARCHAR},
+      executor_timeout = #{executorTimeout,jdbcType=INTEGER},
+      executor_fail_retry_count = #{executorFailRetryCount,jdbcType=INTEGER},
+      glue_type = #{glueType,jdbcType=VARCHAR},
+      glue_source = #{glueSource,jdbcType=VARCHAR},
+      glue_remark = #{glueRemark,jdbcType=VARCHAR},
+      glue_updatetime = #{glueUpdatetime,jdbcType=TIMESTAMP},
+      child_jobid = #{childJobid,jdbcType=VARCHAR},
+      trigger_status = #{triggerStatus,jdbcType=TINYINT},
+      trigger_last_time = #{triggerLastTime,jdbcType=BIGINT},
+      trigger_next_time = #{triggerNextTime,jdbcType=BIGINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
