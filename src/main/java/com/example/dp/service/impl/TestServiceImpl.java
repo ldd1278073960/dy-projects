@@ -4,6 +4,7 @@ import com.example.dp.dao.JmeterTableDAO;
 import com.example.dp.dao.XxlJobInfoDAO;
 import com.example.dp.domain.JmeterTable;
 import com.example.dp.domain.XxlJobInfo;
+import com.example.dp.enums.DataDashLGAppTypeEnum;
 import com.example.dp.service.TestService;
 import com.example.dp.thread.InsertTask;
 import com.example.dp.thread.ThreadQuery;
@@ -99,5 +100,16 @@ public class TestServiceImpl implements TestService {
     @Override
     public List<JmeterTable> getJmeterTablesAll() {
         return jmeterTableDAO.selectJmeterTableAll();
+    }
+
+    @Override
+    public List<String> getLgType() {
+        List<String> result = new ArrayList<>();
+        result.add(DataDashLGAppTypeEnum.SIM_CERT.getType());
+        result.add(DataDashLGAppTypeEnum.SIM_CARD_SMALL.getType());
+        result.add(DataDashLGAppTypeEnum.SIM_SHIELD.getType());
+        result.add(DataDashLGAppTypeEnum.SIM_TRAFFIC.getType());
+        result.add(DataDashLGAppTypeEnum.SIM_ACCESS_CARD.getType());
+        return result;
     }
 }

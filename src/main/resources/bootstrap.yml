@@ -5,8 +5,11 @@ spring:
         server-addr:  127.0.0.1:8848
         namespace:  dp-nacos
         file-extension: yml
+      discovery:
+        namespace: dp-nacos
   application:
     name: business
+
 #logging:
 #  level:
 #    com.alibaba: debug

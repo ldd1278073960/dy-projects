@@ -3,7 +3,9 @@ package com.example.dp.controller;
 import com.example.dp.domain.JmeterTable;
 import com.example.dp.domain.XxlJobInfo;
 import com.example.dp.service.TestService;
+import com.example.dp.utils.AjaxResult;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -37,4 +39,10 @@ public class TestController {
     public List<JmeterTable> selectAll(){
         return testService.getJmeterTables();
     }
+
+    @GetMapping("/getLgType")
+    public AjaxResult getLgType() {
+        return AjaxResult.success(testService.getLgType());
+    }
+
 }

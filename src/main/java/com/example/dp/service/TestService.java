@@ -15,4 +15,7 @@ public interface TestService {
     List<JmeterTable> getJmeterTables();
 
     List<JmeterTable> getJmeterTablesAll();
+
+
+    List<String> getLgType();
 }
